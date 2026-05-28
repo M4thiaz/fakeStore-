@@ -1,5 +1,6 @@
 const produtosDiv = document.getElementById('produtos');
 
+if(produtosDiv){
 fetch("https://fakestoreapi.com/products")
     .then(response => response.json())
     .then(items => {
@@ -19,12 +20,14 @@ fetch("https://fakestoreapi.com/products")
     .catch(erro => {
         console.log("Erro ao processar dados: ", erro);
     })
+}
 
 
 function loginEnviar() {
     let usernameInput = document.getElementById("input1").value
     let passwordInput = document.getElementById("input2").value
     let result = document.querySelector("#areaTxt")
+    let t1 = document.querySelector("#t1")
 
     fetch("https://fakestoreapi.com/users")
 
@@ -36,16 +39,12 @@ function loginEnviar() {
             })
 
             if (usuarioEncontrado) {
-                result.textContent = (`Bem-Vindo(a) ${usernameInput}.`)
-
+                
                 document.body.classList.add("fade-out");
-
+                result.textContent = ""
+                t1.innerHTML += `${usernameInput}!`
                 setTimeout(() => {
-                    window.location.href = "index.html";
-                }, 1000);
-
-
-
+                    window.location.href = "index.html";}, 1000);
             }
             else {
                 result.textContent = "Invalid Password or username!"
@@ -56,5 +55,5 @@ function loginEnviar() {
 }
 
 let btnLogin = document.querySelector("#btnLoginSubmit")
-btnLogin.addEventListener("click", loginEnviar)
+btnLogin?.addEventListener("click", loginEnviar)
 
