@@ -43,6 +43,7 @@ function loginEnviar() {
                 document.body.classList.add("fade-out");
                 result.textContent = ""
                 t1.innerHTML += `${usernameInput}!`
+                
                 setTimeout(() => {
                     window.location.href = "index.html";}, 1000);
             }
